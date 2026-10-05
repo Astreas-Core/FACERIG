@@ -1,0 +1,11 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{B9E1C1F6-3199-4A94-98F1-4F9EE8B41D12}]
+@="FaceIDProvider"
+
+[HKEY_CLASSES_ROOT\CLSID\{B9E1C1F6-3199-4A94-98F1-4F9EE8B41D12}]
+@="FaceIDProvider"
+
+[HKEY_CLASSES_ROOT\CLSID\{B9E1C1F6-3199-4A94-98F1-4F9EE8B41D12}\InprocServer32]
+@="C:\\Users\\DHANVESH\\Documents\\PROJECTS\\facereg\\FaceIDWindows\\build\\CredentialProvider\\Release\\FaceIDProvider.dll"
+"ThreadingModel"="Apartment"

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaceID Windows</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Using a generic sans-serif fallback for Segoe UI Variable -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-layout">
+        <nav class="sidebar">
+            <div class="brand">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>FaceID Windows</span>
+            </div>
+            <ul class="nav-links">
+                <li class="active" data-page="overview">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                    Overview
+                </li>
+                <li data-page="faceid">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 0-10 10c0 5.523 4.477 10 10 10s10-4.477 10-10A10 10 0 0 0 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                    Face ID
+                </li>
+                <li data-page="security">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    Security
+                </li>
+                <li data-page="activity">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    Activity
+                </li>
+                <li data-page="camera">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                    Camera
+                </li>
+                <li data-page="appearance">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/></svg>
+                    Appearance
+                </li>
+                <li data-page="settings">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    Settings
+                </li>
+            </ul>
+            <div class="sidebar-bottom">
+                <ul>
+                    <li>Help</li>
+                    <li>About</li>
+                    <li class="version">FaceID Windows v2.0</li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="content">
+            <header class="top-header">
+                <div></div>
+                <div class="top-right">
+                    <div class="status-indicator">
+                        <span class="dot green"></span> PROTECTED
+                    </div>
+                </div>
+            </header>
+
+            <div class="pages">
+                <!-- OVERVIEW PAGE -->
+                <div class="page active" id="page-overview">
+                    <div class="greeting-section">
+                        <h2>Good afternoon, Dhanvesh</h2>
+                        <p>Your device is protected.</p>
+                    </div>
+
+                    <div class="hero-card">
+                        <div class="hero-content">
+                            <div class="face-visual">
+                                <div class="animated-face-outline">
+                                    <svg class="face-svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 0 0-10 10c0 5.523 4.477 10 10 10s10-4.477 10-10A10 10 0 0 0 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                                    <div class="scan-line" id="overviewScanLine"></div>
+                                </div>
+                            </div>
+                            <div class="hero-status">
+                                <h3 id="hero-state-title">Face authentication ready</h3>
+                                <p class="status-subtitle" id="hero-state-subtitle">Status: READY</p>
+                                <button class="btn btn-primary" id="overviewTestBtn" style="margin-top: 15px;">Test Face Recognition</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="status-cards">
+                        <div class="status-card">
+                            <div class="card-top">
+                                <h4>FACE ID</h4>
+                                <span class="badge green">READY</span>
+                            </div>
+                            <p>Face profile enrolled</p>
+                            <svg class="card-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <div class="status-card">
+                            <div class="card-top">
+                                <h4>LIVENESS</h4>
+                                <span class="badge green">ACTIVE</span>
+                            </div>
+                            <p>Anti-spoofing enabled</p>
+                            <svg class="card-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <div class="status-card">
+                            <div class="card-top">
+                                <h4>LOCAL AI</h4>
+                                <span class="badge green">PRIVATE</span>
+                            </div>
+                            <p>Processing on this device</p>
+                            <svg class="card-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FACE ID PAGE -->
+                <div class="page" id="page-faceid">
+                    <div class="page-header">
+                        <h2>Face ID Profiles</h2>
+                        <p>Manage your enrolled biometric profiles.</p>
+                    </div>
+                    
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3>Active Profiles</h3>
+                            <button class="btn btn-primary btn-sm" id="addNewFaceBtn">Add New Face</button>
+                        </div>
+                        <div id="facesList" class="profile-list">
+                            <!-- JS Populated -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECURITY PAGE -->
+                <div class="page" id="page-security">
+                    <div class="page-header">
+                        <h2>Security Settings</h2>
+                        <p>Configure authentication parameters.</p>
+                    </div>
+
+                    <div class="panel">
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <span class="setting-title">Face Unlock</span>
+                                <span class="setting-desc">Use facial recognition to unlock Windows</span>
+                            </div>
+                            <label class="toggle"><input type="checkbox" id="faceUnlockToggle" checked><span class="slider"></span></label>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <span class="setting-title">Require Liveness</span>
+                                <span class="setting-desc">Require physical presence to prevent spoofing</span>
+                            </div>
+                            <label class="toggle"><input type="checkbox" id="requireLivenessToggle" checked><span class="slider"></span></label>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <span class="setting-title">Recognition Sensitivity</span>
+                                <span class="setting-desc">Higher threshold requires a stricter match</span>
+                            </div>
+                            <div class="slider-control">
+                                <input type="range" id="strictnessSlider" min="10" max="80" value="36">
+                                <span id="strictVal" class="value-display">0.36</span>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-row" style="border-bottom: none; margin-top: 20px;">
+                            <div class="setting-info">
+                                <span class="setting-title">Fallback Authentication</span>
+                                <span class="setting-desc">Vaulted Windows Password</span>
+                            </div>
+                            <button class="btn btn-outline" id="changePinBtn">Change Password</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ACTIVITY PAGE -->
+                <div class="page" id="page-activity">
+                    <div class="page-header">
+                        <h2>Activity Log</h2>
+                        <p>Recent authentication events.</p>
+                    </div>
+                    <div class="panel">
+                        <h4 style="margin-bottom: 15px; color: var(--text-muted); font-size: 13px;">TODAY</h4>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-icon green"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-title">Successful face authentication</div>
+                                    <div class="timeline-time">Just now</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon green"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-title">Windows unlocked</div>
+                                    <div class="timeline-time">09:14 AM</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon amber"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-title">Unrecognized face</div>
+                                    <div class="timeline-time">08:52 AM</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ENROLLMENT PAGE -->
+                <div class="page" id="page-enrollment">
+                    <div class="page-header" style="text-align: center;">
+                        <h2>Set up Face ID</h2>
+                        <p id="enrollmentInstructions">Look directly at the camera and follow the instructions.</p>
+                    </div>
+                    <div class="panel" style="max-width: 500px; margin: 0 auto; padding: 30px; display: flex; flex-direction: column; align-items: center;">
+                        <div id="enrollmentCameraContainer" style="width: 320px; height: 320px; border-radius: 50%; border: 4px solid var(--border-color); overflow: hidden; position: relative; background: #000; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                            <img id="enrollmentPreview" style="width: 100%; height: 100%; object-fit: cover; display: none;" />
+                            <div id="enrollmentOverlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center;">
+                                <div id="enrollmentFaceGuide" style="width: 180px; height: 220px; border: 3px solid rgba(96, 165, 250, 0.7); border-radius: 90px; box-shadow: 0 0 20px rgba(96, 165, 250, 0.3) inset; transition: all 0.3s ease;"></div>
+                                <div class="face-orb" id="enrollmentOrb" style="width: 100px; height: 100px; position: absolute;"></div>
+                            </div>
+                            <div id="faceBoundingBox" style="position: absolute; border: 2px solid rgba(96, 165, 250, 0.5); border-radius: 12px; box-shadow: 0 0 15px rgba(96, 165, 250, 0.2); display: none; pointer-events: none;">
+                                <!-- Removed corners for cleaner look as requested by face guide -->
+                            </div>
+                        </div>
+
+                        <div id="enrollmentProgressContainer" style="width: 100%; margin-top: 30px; text-align: center; display: none;">
+                            <div style="font-size: 11px; font-weight: 600; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 10px;" id="enrollmentStatusText">0 / 30 samples</div>
+                            <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; margin-bottom: 15px;">
+                                <div id="enrollmentProgressBar" style="height: 100%; width: 0%; background: var(--primary); transition: width 0.3s ease;"></div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 30px; display: flex; gap: 15px;">
+                            <button class="btn btn-outline" id="cancelEnrollmentBtn">Cancel</button>
+                            <button class="btn btn-primary" id="startEnrollmentBtn">Start Enrollment</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAMERA PAGE -->
+                <div class="page" id="page-camera">
+                    <div class="page-header">
+                        <h2>Camera Diagnostics</h2>
+                        <p>Verify camera hardware and alignment.</p>
+                    </div>
+                    <div class="panel" style="display: flex; gap: 30px;">
+                        <div style="flex: 1;">
+                            <div style="width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 8px; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
+                                <video id="cameraPreviewVideo" autoplay style="width: 100%; height: 100%; object-fit: cover; display: none;"></video>
+                                <div id="cameraPreviewPlaceholder" style="color: var(--text-muted); font-size: 13px;">Camera preview offline</div>
+                            </div>
+                            <div style="margin-top: 15px; display: flex; gap: 10px;">
+                                <button class="btn btn-primary btn-sm" id="testCameraBtn">Start Preview</button>
+                                <button class="btn btn-outline btn-sm" id="refreshCamerasBtn">Refresh Devices</button>
+                            </div>
+                        </div>
+                        <div style="width: 250px; display: flex; flex-direction: column; gap: 15px;">
+                            <div>
+                                <h4 style="font-size: 11px; color: var(--text-muted); margin-bottom: 4px;">DEVICE</h4>
+                                <select id="cameraSelect" style="width: 100%; background: rgba(0,0,0,0.3); color: white; border: 1px solid var(--border-color); padding: 8px; border-radius: 4px; outline: none; font-size: 13px;">
+                                    <option>Loading...</option>
+                                </select>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 11px; color: var(--text-muted); margin-bottom: 4px;">RESOLUTION</h4>
+                                <div style="font-size: 14px;" id="camRes">--</div>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 11px; color: var(--text-muted); margin-bottom: 4px;">STATUS</h4>
+                                <div style="font-size: 14px; color: var(--success);" id="camStatus">● Ready</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- APPEARANCE PAGE -->
+                <div class="page" id="page-appearance">
+                    <div class="page-header">
+                        <h2>Appearance</h2>
+                        <p>Customize the look and feel of the application.</p>
+                    </div>
+                    
+                    <div class="panel">
+                        <h3>Material System</h3>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <span class="setting-title">Acrylic Mode</span>
+                                <span class="setting-desc">Use translucent acrylic materials throughout the dashboard.</span>
+                            </div>
+                            <label class="toggle"><input type="checkbox" id="acrylicToggle"><span class="slider"></span></label>
+                        </div>
+                        <div class="setting-row" style="border-bottom: none;">
+                            <div class="setting-info">
+                                <span class="setting-title">Dashboard Opacity</span>
+                                <span class="setting-desc">Adjust the base transparency of the window.</span>
+                            </div>
+                            <div class="slider-control">
+                                <input type="range" id="transparencySlider" min="50" max="100" value="90">
+                                <span id="transparencyVal" class="value-display">90%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SETTINGS PAGE -->
+                <div class="page" id="page-settings">
+                    <div class="page-header">
+                        <h2>Application Settings</h2>
+                        <p>Configure general and privacy preferences.</p>
+                    </div>
+                    
+                    <div class="panel">
+                        <h3>General</h3>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <span class="setting-title">Start with Windows</span>
+                            </div>
+                            <label class="toggle"><input type="checkbox" id="startWindowsToggle"><span class="slider"></span></label>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-info">
+                                <span class="setting-title">Lock PC on Sleep/Suspend</span>
+                            </div>
+                            <label class="toggle"><input type="checkbox" id="lockSleepToggle"><span class="slider"></span></label>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>Privacy</h3>
+                        <div class="privacy-message">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            <div>
+                                <strong>Your biometric data stays on this PC.</strong><br>
+                                Face recognition is processed locally. No camera frames are uploaded.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="authModal" class="modal-backdrop" style="display: none;">
+        <div class="modal-card">
+            <h2 id="authTitle">Authenticate Action</h2>
+            <p id="authDesc">Enter your Windows Account Password.</p>
+            <input type="password" id="authPassword" placeholder="Password" class="pin-input">
+            <div class="modal-actions">
+                <button class="btn btn-outline" id="cancelAuthBtn">Cancel</button>
+                <button class="btn btn-primary" id="confirmAuthBtn">Verify</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Setup PIN Modal -->
+    <div id="setupPinModal" class="modal-backdrop" style="display: none;">
+        <div class="modal-card">
+            <h2>Setup Windows Password</h2>
+            <p>Enter your Microsoft Account Password to enable automatic unlock.</p>
+            <input type="password" id="setupPin1" placeholder="Windows Password" class="pin-input" style="margin-bottom: 10px;">
+            <input type="password" id="setupPin2" placeholder="Confirm Password" class="pin-input">
+            <div class="modal-actions">
+                <button class="btn btn-primary" id="confirmSetupPinBtn" style="width: 100%;">Save Password</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add Face Modal -->
+    <div id="addFaceModal" class="modal-backdrop" style="display: none;">
+        <div class="modal-card">
+            <h2>Add New Face</h2>
+            <p>Enter a name for the new biometric profile.</p>
+            <input type="text" id="newFaceNameInput" placeholder="Name (e.g. John)" class="text-input">
+            <div class="modal-actions">
+                <button class="btn btn-outline" id="cancelAddFaceBtn">Cancel</button>
+                <button class="btn btn-primary" id="confirmAddFaceBtn">Proceed to Scan</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>

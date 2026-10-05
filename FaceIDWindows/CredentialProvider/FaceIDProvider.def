@@ -1,0 +1,4 @@
+LIBRARY FaceIDProvider
+EXPORTS
+    DllCanUnloadNow   PRIVATE
+    DllGetClassObject PRIVATE

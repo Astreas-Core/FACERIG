@@ -1,0 +1,31 @@
+# Build directories
+build/
+FaceIDWindows/build/
+FaceIDWindows/vcpkg/
+FaceIDWindows/vcpkg_installed/
+.vs/
+out/
+bin/
+obj/
+*.user
+*.suo
+
+# Node
+node_modules/
+FaceIDWindows/Dashboard/node_modules/
+
+# Models & Media
+*.onnx
+*.mp4
+*.png
+*.jpg
+FaceIDWindows/Models/
+
+# Credentials & Temp Files
+*.bin
+*.log
+cp_debug.log
+faceid_debug.log
+
+# Mac
+.DS_Store
