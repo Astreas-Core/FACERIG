@@ -28,7 +28,7 @@ IFACEMETHODIMP CCredential::Advise(ICredentialProviderCredentialEvents* pcpce) {
     _pcpce->AddRef();
     
     FILE* f;
-    if (fopen_s(&f, "C:\\Users\\DHANVESH\\Documents\\PROJECTS\\facereg\\FaceIDWindows\\cp_debug.log", "a") == 0) {
+    if (fopen_s(&f, "C:\\FaceID\\cp_debug.log", "a") == 0) {
         fprintf(f, "Credential::Advise starting thread\n");
         fclose(f);
     }
@@ -37,11 +37,11 @@ IFACEMETHODIMP CCredential::Advise(ICredentialProviderCredentialEvents* pcpce) {
     std::thread([this]() {
         STARTUPINFOW si = { sizeof(si) };
         PROCESS_INFORMATION pi = { 0 };
-        std::wstring cmd = L"C:\\Users\\DHANVESH\\Documents\\PROJECTS\\facereg\\FaceIDWindows\\build\\App\\Release\\FaceIDApp.exe --test --headless --no-liveness --strictness 0.25";
+        std::wstring cmd = L"C:\\FaceID\\FaceIDApp.exe --test --headless --no-liveness --strictness 0.25";
         std::vector<wchar_t> cmdBuffer(cmd.begin(), cmd.end());
         cmdBuffer.push_back(0);
 
-        if (CreateProcessW(NULL, cmdBuffer.data(), NULL, NULL, FALSE, CREATE_NO_WINDOW, NULL, L"C:\\Users\\DHANVESH\\Documents\\PROJECTS\\facereg\\FaceIDWindows", &si, &pi)) {
+        if (CreateProcessW(NULL, cmdBuffer.data(), NULL, NULL, FALSE, CREATE_NO_WINDOW, NULL, L"C:\\FaceID", &si, &pi)) {
             WaitForSingleObject(pi.hProcess, 30000); // Wait up to 30s while lock screen is active
             DWORD exitCode = 1;
             GetExitCodeProcess(pi.hProcess, &exitCode);
@@ -49,7 +49,7 @@ IFACEMETHODIMP CCredential::Advise(ICredentialProviderCredentialEvents* pcpce) {
             CloseHandle(pi.hThread);
 
             FILE* f2;
-            if (fopen_s(&f2, "C:\\Users\\DHANVESH\\Documents\\PROJECTS\\facereg\\FaceIDWindows\\cp_debug.log", "a") == 0) {
+            if (fopen_s(&f2, "C:\\FaceID\\cp_debug.log", "a") == 0) {
                 fprintf(f2, "Credential thread finished. ExitCode=%lu\n", exitCode);
                 fclose(f2);
             }
@@ -82,7 +82,7 @@ IFACEMETHODIMP CCredential::SetSelected(BOOL* pbAutoLogon) {
     }
     
     FILE* f;
-    if (fopen_s(&f, "C:\\Users\\DHANVESH\\Documents\\PROJECTS\\facereg\\FaceIDWindows\\cp_debug.log", "a") == 0) {
+    if (fopen_s(&f, "C:\\FaceID\\cp_debug.log", "a") == 0) {
         fprintf(f, "Credential::SetSelected. AutoLogon=%d\n", *pbAutoLogon);
         fclose(f);
     }
@@ -132,7 +132,7 @@ IFACEMETHODIMP CCredential::GetSerialization(CREDENTIAL_PROVIDER_GET_SERIALIZATI
 
     // Load machine-encrypted password
     std::vector<unsigned char> pwData;
-    std::string path = "C:\\Users\\DHANVESH\\Documents\\PROJECTS\\facereg\\FaceIDWindows\\password_DefaultUser.bin";
+    std::string path = "C:\\FaceID\\password_DefaultUser.bin";
     
     if (!FaceID::Security::SecureStorage::LoadMachineEncryptedFile(path, pwData) || pwData.empty()) {
         *pcpgsr = CPGSR_NO_CREDENTIAL_NOT_FINISHED;
@@ -140,7 +140,7 @@ IFACEMETHODIMP CCredential::GetSerialization(CREDENTIAL_PROVIDER_GET_SERIALIZATI
     }
 
     std::wstring password(reinterpret_cast<wchar_t*>(pwData.data()), pwData.size() / sizeof(wchar_t));
-    std::wstring username = L"DHANVESH"; 
+    std::wstring username = L"YOUR_USERNAME"; 
 
     DWORD cbAuthBuffer = 0;
     CredPackAuthenticationBufferW(0, const_cast<LPWSTR>(username.c_str()), const_cast<LPWSTR>(password.c_str()), nullptr, &cbAuthBuffer);
@@ -156,7 +156,7 @@ IFACEMETHODIMP CCredential::GetSerialization(CREDENTIAL_PROVIDER_GET_SERIALIZATI
             pcpcs->clsidCredentialProvider = CLSID_PasswordCredentialProvider;
             
             FILE* f;
-            if (fopen_s(&f, "C:\\Users\\DHANVESH\\Documents\\PROJECTS\\facereg\\FaceIDWindows\\cp_debug.log", "a") == 0) {
+            if (fopen_s(&f, "C:\\FaceID\\cp_debug.log", "a") == 0) {
                 fprintf(f, "GetSerialization SUCCESS! Packed %lu bytes. Auth=%d\n", cbAuthBuffer, _isAuthenticated.load());
                 fclose(f);
             }
@@ -167,7 +167,7 @@ IFACEMETHODIMP CCredential::GetSerialization(CREDENTIAL_PROVIDER_GET_SERIALIZATI
     }
     
     FILE* f;
-    if (fopen_s(&f, "C:\\Users\\DHANVESH\\Documents\\PROJECTS\\facereg\\FaceIDWindows\\cp_debug.log", "a") == 0) {
+    if (fopen_s(&f, "C:\\FaceID\\cp_debug.log", "a") == 0) {
         fprintf(f, "GetSerialization FAILED inside buffer prep. cbAuthBuffer=%lu\n", cbAuthBuffer);
         fclose(f);
     }
@@ -177,7 +177,7 @@ IFACEMETHODIMP CCredential::GetSerialization(CREDENTIAL_PROVIDER_GET_SERIALIZATI
 
 IFACEMETHODIMP CCredential::ReportResult(NTSTATUS ntsStatus, NTSTATUS ntsSubstatus, LPWSTR* ppszOptionalStatusText, CREDENTIAL_PROVIDER_STATUS_ICON* pcpsiOptionalStatusIcon) {
     FILE* f;
-    if (fopen_s(&f, "C:\\Users\\DHANVESH\\Documents\\PROJECTS\\facereg\\FaceIDWindows\\cp_debug.log", "a") == 0) {
+    if (fopen_s(&f, "C:\\FaceID\\cp_debug.log", "a") == 0) {
         fprintf(f, "ReportResult Called! ntsStatus=0x%lx, ntsSubstatus=0x%lx\n", ntsStatus, ntsSubstatus);
         fclose(f);
     }

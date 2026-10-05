@@ -44,14 +44,14 @@ std::string base64_encode(const unsigned char* bytes_to_encode, unsigned int in_
 
 void log_to_file(const std::string& msg) {
     FILE* f;
-    if (fopen_s(&f, "C:\\Users\\DHANVESH\\Documents\\PROJECTS\\facereg\\FaceIDWindows\\faceid_debug.log", "a") == 0) {
+    if (fopen_s(&f, "C:\\FaceID\\faceid_debug.log", "a") == 0) {
         fprintf(f, "%s\n", msg.c_str());
         fclose(f);
     }
 }
 void log_app(const std::string& msg) {
     FILE* f;
-    if (fopen_s(&f, "C:\\Users\\DHANVESH\\Documents\\PROJECTS\\facereg\\FaceIDWindows\\faceid_debug.log", "a") == 0) {
+    if (fopen_s(&f, "C:\\FaceID\\faceid_debug.log", "a") == 0) {
         fprintf(f, "%s\n", msg.c_str());
         fclose(f);
     }

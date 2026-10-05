@@ -74,7 +74,7 @@ IFACEMETHODIMP CProvider::GetCredentialCount(DWORD* pdwCount, DWORD* pdwDefault,
     }
     
     FILE* f;
-    if (fopen_s(&f, "C:\\Users\\DHANVESH\\Documents\\PROJECTS\\facereg\\FaceIDWindows\\cp_debug.log", "a") == 0) {
+    if (fopen_s(&f, "C:\\FaceID\\cp_debug.log", "a") == 0) {
         fprintf(f, "Provider::GetCredentialCount. AutoLogon=%d\n", *pbAutoLogonWithDefault);
         fclose(f);
     }
@@ -91,7 +91,7 @@ IFACEMETHODIMP CProvider::GetCredentialAt(DWORD dwIndex, ICredentialProviderCred
     }
     
     FILE* f;
-    if (fopen_s(&f, "C:\\Users\\DHANVESH\\Documents\\PROJECTS\\facereg\\FaceIDWindows\\cp_debug.log", "a") == 0) {
+    if (fopen_s(&f, "C:\\FaceID\\cp_debug.log", "a") == 0) {
         fprintf(f, "Provider::GetCredentialAt(Index=0)\n");
         fclose(f);
     }
